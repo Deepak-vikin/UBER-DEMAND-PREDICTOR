@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Riders Predictor</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <div class="content-split">
+                <!-- Left Side: Visual/Context -->
+                <div class="visual-side">
+                    <div class="overlay"></div>
+                    <div class="text-content">
+                        <h1><i class="fas fa-taxi"></i> Uber Intelligence</h1>
+                        <p>Predict weekly ridership with advanced analytics. Optimize your fleet management today.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-chart-line"></i> Data Driven</li>
+                            <li><i class="fas fa-city"></i> City Wide Scope</li>
+                            <li><i class="fas fa-bolt"></i> Instant Results</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Side: Form -->
+                <div class="form-side">
+                    <div class="form-header">
+                        <h2>Prediction Engine</h2>
+                        <p>Enter parameters to forecast demand</p>
+                    </div>
+
+                    <form action="{{ url_for('predict') }}" method="post">
+                        <div class="input-group">
+                            <label for="price_per_week"><i class="fas fa-dollar-sign"></i> Price per Week</label>
+                            <input type="number" id="price_per_week" name="price_per_week" placeholder="e.g. 150"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="population"><i class="fas fa-users"></i> Population</label>
+                            <input type="number" id="population" name="population" placeholder="e.g. 50000" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="monthly_income"><i class="fas fa-wallet"></i> Monthly Income</label>
+                            <input type="number" id="monthly_income" name="monthly_income" placeholder="e.g. 2500"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="average_parking_per_month"><i class="fas fa-parking"></i> Avg. Parking /
+                                Month</label>
+                            <input type="number" id="average_parking_per_month" name="average_parking_per_month"
+                                placeholder="e.g. 75" required>
+                        </div>
+
+                        <button type="submit" class="cta-button">
+                            <i class="fas fa-calculator"></i> Calculate Forecast
+                        </button>
+                    </form>
+
+                    {% if prediction_text %}
+                    <div class="result-card fade-in">
+                        <div class="icon-box">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="result-info">
+                            <h3>Forecast Result</h3>
+                            <p>{{ prediction_text }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

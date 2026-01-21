@@ -1,0 +1,20 @@
+[project]
+name = "uber-project"
+version = "0.1.0"
+description = "This Project is about predicting Price"
+authors = [
+    {name = "Deepak"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel (>=7.1.0,<8.0.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "numpy (>=2.4.1,<3.0.0)",
+    "fastapi (>=0.128.0,<0.129.0)",
+    "scikit-learn (>=1.8.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
